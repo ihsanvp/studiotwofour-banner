@@ -1,0 +1,334 @@
+.gdn-section .tabs li {
+  width: 50%;
+}
+
+.sidebar-navigation .logo a {
+  display: inline-block;
+  background-color:transparent;
+  border: none;
+  cursor: default;
+}
+
+.sidebar-navigation .logo a img {
+  z-index: 50;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.sidebar-navigation .logo {
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  line-height: 100px;
+  background-color: #3D348B;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Campaign Details Styles */
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue;
+  width: 100%;
+  height: 60px;
+  transform: translateY(380%);
+}
+
+.line {
+  width: 16%;
+  height: 1px;
+  background-color: aliceblue;
+  transform: translateY(16px);
+}
+
+.info .header {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.info .header .content {
+  text-align: center;
+  padding: 0 10px;
+  font-size: 20px;
+}
+
+.date {
+  padding: 5px 0;
+  color: rgb(179, 179, 179);
+}
+
+
+
+/* GDN Styles */
+.playarea {
+  height: 77%;
+  text-align: center; }
+  .playarea #gdn-120x600 .device,
+  .playarea #gdn-160x600 .device,
+  .playarea #gdn-250x250 .device,
+  .playarea #gdn-300x250 .device,
+  .playarea #gdn-300x600 .device,
+  .playarea #gdn-320x50 .device,
+  .playarea #gdn-320x100 .device,
+  .playarea #gdn-336x280 .device,
+  .playarea #gdn-728x90 .device,
+  .playarea #gdn-970x90 .device {
+    width: 1024px;
+    height: 768px; }
+  .playarea #gdn-120x600 .tab-content,
+  .playarea #gdn-160x600 .tab-content,
+  .playarea #gdn-250x250 .tab-content,
+  .playarea #gdn-300x250 .tab-content,
+  .playarea #gdn-300x600 .tab-content,
+  .playarea #gdn-320x50 .tab-content,
+  .playarea #gdn-320x100 .tab-content,
+  .playarea #gdn-336x280 .tab-content,
+  .playarea #gdn-728x90 .tab-content,
+  .playarea #gdn-970x90 .tab-content {
+    overflow: hidden; }
+  .playarea #gdn-120x600 #desktop,
+  .playarea #gdn-160x600 #desktop,
+  .playarea #gdn-250x250 #desktop,
+  .playarea #gdn-300x250 #desktop,
+  .playarea #gdn-300x600 #desktop,
+  .playarea #gdn-320x50 #desktop,
+  .playarea #gdn-320x100 #desktop,
+  .playarea #gdn-336x280 #desktop,
+  .playarea #gdn-728x90 #desktop,
+  .playarea #gdn-970x90 #desktop {
+    padding-top: 37px; }
+    .playarea #gdn-120x600 #desktop .slides-wrapper,
+    .playarea #gdn-160x600 #desktop .slides-wrapper,
+    .playarea #gdn-250x250 #desktop .slides-wrapper,
+    .playarea #gdn-300x250 #desktop .slides-wrapper,
+    .playarea #gdn-300x600 #desktop .slides-wrapper,
+    .playarea #gdn-320x50 #desktop .slides-wrapper,
+    .playarea #gdn-320x100 #desktop .slides-wrapper,
+    .playarea #gdn-336x280 #desktop .slides-wrapper,
+    .playarea #gdn-728x90 #desktop .slides-wrapper,
+    .playarea #gdn-970x90 #desktop .slides-wrapper {
+      overflow-y: hidden !important; }
+  .playarea #gdn-120x600 .tab-content,
+  .playarea #gdn-120x600 .tab-pane,
+  .playarea #gdn-120x600 iframe,
+  .playarea #gdn-160x600 .tab-content,
+  .playarea #gdn-160x600 .tab-pane,
+  .playarea #gdn-160x600 iframe,
+  .playarea #gdn-250x250 .tab-content,
+  .playarea #gdn-250x250 .tab-pane,
+  .playarea #gdn-250x250 iframe,
+  .playarea #gdn-300x250 .tab-content,
+  .playarea #gdn-300x250 .tab-pane,
+  .playarea #gdn-300x250 iframe,
+  .playarea #gdn-300x600 .tab-content,
+  .playarea #gdn-300x600 .tab-pane,
+  .playarea #gdn-300x600 iframe,
+  .playarea #gdn-320x50 .tab-content,
+  .playarea #gdn-320x50 .tab-pane,
+  .playarea #gdn-320x50 iframe,
+  .playarea #gdn-320x100 .tab-content,
+  .playarea #gdn-320x100 .tab-pane,
+  .playarea #gdn-320x100 iframe,
+  .playarea #gdn-336x280 .tab-content,
+  .playarea #gdn-336x280 .tab-pane,
+  .playarea #gdn-336x280 iframe,
+  .playarea #gdn-728x90 .tab-content,
+  .playarea #gdn-728x90 .tab-pane,
+  .playarea #gdn-728x90 iframe,
+  .playarea #gdn-970x90 .tab-content,
+  .playarea #gdn-970x90 .tab-pane,
+  .playarea #gdn-970x90 iframe {
+    height: 100%;
+    width: 100%; }
+  
+  .playarea #gdn-250x250 #desktop .slides-wrapper {
+    height: 250px;
+    width: 250px;
+    margin-right: 38px;
+    top: 77px; 
+  }
+  
+  .playarea #gdn-300x250 #desktop .slides-wrapper {
+    height: 250px;
+    width: 300px;
+    margin-right: 38px;
+    top: 82px; }
+  
+  .playarea #gdn-320x50 #desktop .slides-wrapper {
+    height: 50px;
+    width: 320px;
+    margin-right: auto;
+    top: 29.3rem; }
+  
+  .playarea #gdn-336x280 #desktop .slides-wrapper {
+    height: 280px;
+    width: 336px;
+    margin-right: auto;
+    top: 7.8rem;
+    left: 30.6rem; }
+  
+  .playarea #gdn-970x90 #desktop .slides-wrapper {
+    height: 90px;
+    width: 970px;
+    margin-right: auto;
+    top: 5rem; }
+  
+  .playarea #gdn-320x100 #desktop .slides-wrapper {
+    height: 100px;
+    width: 320px;
+    margin-right: auto;
+    top: 46.7rem;
+    right: 73px; }
+  
+  .playarea #gdn-120x600 #desktop .slides-wrapper {
+    height: 600px;
+    width: 120px;
+    margin-right: 39px;
+    top: 78px; }
+  
+  .playarea #gdn-728x90 #desktop .slides-wrapper {
+    height: 90px;
+    width: 728px;
+    margin-right: 39px;
+    top: 77px; }
+  
+  .playarea #gdn-160x600 #desktop .slides-wrapper {
+    height: 600px;
+    width: 160px;
+    margin-right: 39px;
+    top: 77px; }
+  
+  .playarea #gdn-300x600 #desktop .slides-wrapper {
+    height: 600px;
+    width: 300px;
+    margin-right: 38px;
+    top: 77px; }
+  
+  .playarea .device {
+    position: relative;
+    width: 1150px;
+    height: 690px;
+    display: inline-block; }
+  .playarea .device-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none; }
+  .playarea .slides-wrapper {
+    position: relative;
+    z-index: 1;
+    margin: auto;
+    overflow-y: scroll; }
+    
+
+
+@media screen and (max-height:900px) {
+  .info {
+    transform: translateY(300%);
+  }
+}
+
+@media screen and (max-width:1550px) {
+  .playarea #gdn-120x600 #desktop .device-content {
+    background: none; 
+  }
+  .playarea #gdn-160x600 #desktop .device-content {
+    background: none; 
+  }
+  .playarea #gdn-250x250 #desktop .device-content {
+    background: none; 
+  }
+  .playarea #gdn-300x250 #desktop .device-content {
+    background: none; 
+  }
+  .playarea #gdn-300x600 #desktop .device-content {
+    background: none; 
+  }
+  .playarea #gdn-320x50 #desktop .device-content {
+    background: none; 
+  }
+  .playarea #gdn-320x100 #desktop .device-content {
+    background: none; 
+  }
+  .playarea #gdn-336x280 #desktop .device-content {
+    background: none; 
+  }
+  .playarea #gdn-728x90 #desktop .device-content {
+    background: none; 
+  }
+  .playarea #gdn-970x90 #desktop .device-content {
+    background: none; 
+  }
+
+  .playarea .device {
+    width: 100%;
+  }
+
+  .playarea #gdn-120x600 #desktop .slides-wrapper {
+    margin-left: 40%;
+    margin-right: 0;
+    top: -5%;
+  }
+
+  .playarea #gdn-160x600 #desktop .slides-wrapper {
+    margin-left: 40%;
+    margin-right: 0;
+    top: -5%;
+  }
+
+  .playarea #gdn-250x250 #desktop .slides-wrapper {
+    margin-left: 38%;
+    margin-right: 0;
+    top: 10%;
+  }
+
+  .playarea #gdn-300x250 #desktop .slides-wrapper {
+    margin-left: 35%;
+    margin-right: 0;
+    top: 10%;
+  }
+
+  .playarea #gdn-300x600 #desktop .slides-wrapper {
+    margin-left: 35%;
+    margin-right: 0;
+    top: -5%;
+  }
+
+  .playarea #gdn-320x50 #desktop .slides-wrapper {
+    margin-left: 33%;
+    margin-right: 0;
+    top: 10%;
+  }
+
+  .playarea #gdn-320x100 #desktop .slides-wrapper {
+    margin-left: 39%;
+    margin-right: 0;
+    top: 10%;
+  }
+
+  .playarea #gdn-336x280 #desktop .slides-wrapper {
+    margin-left: 14%;
+    margin-right: 0;
+    top: 10%;
+  }
+
+  .playarea #gdn-728x90 #desktop .slides-wrapper {
+    margin-left: 14%;
+    margin-right: 0;
+    top: 10%;
+  }
+
+  .playarea #gdn-970x90 #desktop .slides-wrapper {
+    margin-left: 1%;
+    margin-right: 0;
+    top: 10%;
+  }
+}

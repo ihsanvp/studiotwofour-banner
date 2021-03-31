@@ -1,0 +1,53 @@
+.card {
+  transition: 0.3s all ease-in-out;
+}
+
+.link-card:hover {
+  text-decoration: none;
+}
+
+.link-card:hover .card {
+  box-shadow: 0 .25rem 1.95rem 0 rgb(58, 59, 69);
+  transform: scale(1.05);
+}
+
+
+.flex-h-center {
+  justify-content: center;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.text-black {
+  color: black;
+}
+
+.text-black:hover {
+  color: black;
+}
+
+.p-fixed {
+  position: fixed;
+}
+
+.cap {
+  text-transform: capitalize;
+}
+
+.form-control-edit {
+  border-color: #36b9cc;
+}
+
+.b-round {
+  border-radius: 10rem;
+}
+
+.accordion-link h5 {
+  color: gray;
+}
+
+.accordion-link:hover h5 {
+  color: #4e73df;
+}
