@@ -1,0 +1,270 @@
+{% load static %} {% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        /* GDN Styles */
+        .banner-wrapper {
+            height: 77%;
+            text-align: center;
+        }
+        .banner-wrapper .device {
+            width: 1024px;
+            height: 768px;
+            position: relative;
+            display: inline-block;
+        }
+        /* .banner-wrapper .banner-300x1050 .device {
+            width: 1080px;
+            height: 3060px;
+        } */
+        .banner-wrapper .tab-content {
+            overflow: hidden;
+        }
+        .banner-wrapper .desktop {
+            padding-top: 37px;
+        }
+        .banner-wrapper .desktop .slides-wrapper {
+            overflow-y: hidden !important;
+        }
+        .banner-wrapper .tab-content,
+        .banner-wrapper .tab-pane,
+        .banner-wrapper iframe {
+            height: 100%;
+            width: 100%;
+        }
+        .banner-wrapper .device-content {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .banner-wrapper .slides-wrapper {
+            position: relative;
+            z-index: 1;
+            margin: auto;
+            overflow-y: scroll;
+        }
+    </style>
+
+    <style>
+        /* .banner-wrapper .desktop .slides-wrapper {
+            background-color: tomato;
+        } */
+        .banner-wrapper .banner-120x240 .desktop .slides-wrapper {
+            width: 120px;
+            height: 240px;
+            margin-right: 38px;
+            top: 77px;
+        }
+        .banner-wrapper .banner-120x600 .desktop .slides-wrapper {
+            width: 120px;
+            height: 600px;
+            margin-right: 39px;
+            top: 78px;
+        }
+        .banner-wrapper .banner-160x600 .desktop .slides-wrapper {
+            width: 160px;
+            height: 600px;
+            margin-right: 39px;
+            top: 77px;
+        }
+        .banner-wrapper .banner-200x200 .desktop .slides-wrapper {
+            width: 200px;
+            height: 200px;
+            margin-right: 39px;
+            top: 78px;
+        }
+        .banner-wrapper .banner-250x250 .desktop .slides-wrapper {
+            width: 250px;
+            height: 250px;
+            margin-right: 38px;
+            top: 77px;
+        }
+        .banner-wrapper .banner-300x50 .desktop .slides-wrapper {
+            width: 300px;
+            height: 50px;
+            margin-right: 362px;
+            top: 307px;
+        }
+        .banner-wrapper .banner-300x250 .desktop .slides-wrapper {
+            width: 300px;
+            height: 250px;
+            margin-right: 38px;
+            top: 82px;
+        }
+        .banner-wrapper .banner-300x600 .desktop .slides-wrapper {
+            width: 300px;
+            height: 600px;
+            margin-right: 38px;
+            top: 77px;
+        }
+        .banner-wrapper .banner-300x1050 .desktop .slides-wrapper {
+            width: 300px;
+            height: 1050px;
+            margin-right: 38px;
+            top: 77px;
+        }
+        .banner-wrapper .banner-320x50 .desktop .slides-wrapper {
+            width: 320px;
+            height: 50px;
+            margin-right: auto;
+            top: 19.3rem;
+        }
+        .banner-wrapper .banner-320x100 .desktop .slides-wrapper {
+            width: 320px;
+            height: 100px;
+            margin-right: auto;
+            top: 29.3rem;
+            right: 73px;
+        }
+        .banner-wrapper .banner-320x240 .desktop .slides-wrapper {
+            width: 320px;
+            height: 240px;
+            margin-right: 27rem;
+            top: 29rem;
+        }
+        .banner-wrapper .banner-320x480 .desktop .slides-wrapper {
+            width: 320px;
+            height: 480px;
+            margin-right: 38px;
+            top: 217px;
+        }
+        .banner-wrapper .banner-336x280 .desktop .slides-wrapper {
+            width: 336px;
+            height: 280px;
+            margin-right: auto;
+            top: 4.8rem;
+            left: 19rem;
+        }
+        .banner-wrapper .banner-468x60 .desktop .slides-wrapper {
+            width: 486px;
+            height: 60px;
+            margin-right: 38px;
+            top: -11px;
+        }
+        .banner-wrapper .banner-728x90 .desktop .slides-wrapper {
+            width: 728px;
+            height: 90px;
+            margin-right: 39px;
+            top: 77px;
+        }
+        .banner-wrapper .banner-970x90 .desktop .slides-wrapper {
+            width: 970px;
+            height: 90px;
+            margin-right: auto;
+            top: 5rem;
+        }
+        .banner-wrapper .banner-970x250 .desktop .slides-wrapper {
+            width: 970px;
+            height: 250px;
+            margin-right: auto;
+            top: -1rem;
+        }
+    </style>
+
+    <style>
+        .banner-wrapper .banner-120x240 .desktop .device-content {
+            background: url("{% static 'banner_svg/120x240.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-120x600 .desktop .device-content {
+            background: url("{% static 'banner_svg/120x600.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-160x600 .desktop .device-content {
+            background: url("{% static 'banner_svg/160x600.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-200x200 .desktop .device-content {
+            background: url("{% static 'banner_svg/200x200.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-250x250 .desktop .device-content {
+            background: url("{% static 'banner_svg/250x250.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-300x50 .desktop .device-content {
+            background: url("{% static 'banner_svg/300x50.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-300x250 .desktop .device-content {
+            background: url("{% static 'banner_svg/300x250.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-300x600 .desktop .device-content {
+            background: url("{% static 'banner_svg/300x600.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-300x1050 .desktop .device-content {
+            background: url("{% static 'banner_svg/300x1050.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-320x50 .desktop .device-content {
+            background: url("{% static 'banner_svg/320x50.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-320x100 .desktop .device-content {
+            background: url("{% static 'banner_svg/320x100.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-320x240 .desktop .device-content {
+            background: url("{% static 'banner_svg/320x240.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-320x480 .desktop .device-content {
+            background: url("{% static 'banner_svg/320x480.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-336x280 .desktop .device-content {
+            background: url("{% static 'banner_svg/336x280.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-468x60 .desktop .device-content {
+            background: url("{% static 'banner_svg/468x60.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-728x90 .desktop .device-content {
+            background: url("{% static 'banner_svg/728x90.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-970x90 .desktop .device-content {
+            background: url("{% static 'banner_svg/970x90.svg' %}") top center
+                no-repeat;
+        }
+        .banner-wrapper .banner-970x250 .desktop .device-content {
+            background: url("{% static 'banner_svg/970x250.svg' %}") top center
+                no-repeat;
+        }
+    </style>
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        {% for type in types %}
+        <section>
+            <div class="banner-wrapper">
+                <div class="banner banner-{{ type|index:0 }}">
+                    <div class="device desktop">
+                        <div class="device-content"></div>
+                        <div class="slides-wrapper">
+                            <iframe
+                                class="main"
+                                src="{% static '' %}banner/eng/{{ banner.name }}/index.html"
+                                frameborder="0"
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endfor %}
+    </body>
+</html>

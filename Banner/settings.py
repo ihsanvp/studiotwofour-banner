@@ -25,7 +25,7 @@ SECRET_KEY = 'mnpmtkj=b!-$nx(kv0*f8-#&b6jtbl6l8crt6r@(w@(a*!jn21'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['studiotwofour.pythonanywhere.com']
+ALLOWED_HOSTS = ['studiotwofour.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition

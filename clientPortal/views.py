@@ -20,6 +20,37 @@ def home(request) :
   return render(request, 'clientPortal/home.html', context)
 
 
+def test(request) :
+
+  TYPES = (
+        ('120x240', '120x240'),
+        ('120x600', '120x600'),
+        ('160x600', '160x600'),
+        ('200x200', '200x200'),
+        ('250x250', '250x250'),
+        ('300x50', '300x50'),
+        ('300x250', '300x250'),
+        ('300x600', '300x600'),
+        ('300x1050', '300x1050'),
+        ('320x50', '320x50'),
+        ('320x100', '320x100'),
+        ('320x240', '320x240'),
+        ('320x480', '320x480'),
+        ('336x280', '336x280'),
+        ('468x60', '468x60'),
+        ('728x90', '728x90'),
+        ('970x90', '970x90'),
+        ('970x250', '970x250'),
+    )
+
+  context = {
+    'banner': Banner.objects.first(),
+    'types': TYPES
+  }
+
+  return render(request, 'clientPortal/test.html', context=context)
+
+
 
 
 def client_page(request, client_name, campaign_name) :
@@ -56,5 +87,6 @@ def client_page(request, client_name, campaign_name) :
   context = {
     'client':client,
     'campaign':campaign,
+    'count': range(9)
   }
   return render(request, 'clientPortal/client_page.html', context)
