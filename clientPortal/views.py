@@ -6,6 +6,8 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required 
+from django.http import HttpResponseNotFound, JsonResponse
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 @login_required()
@@ -89,4 +91,24 @@ def client_page(request, client_name, campaign_name) :
     'campaign':campaign,
     'count': range(9)
   }
-  return render(request, 'clientPortal/client_page.html', context)
+  if campaign.published :
+    return render(request, 'clientPortal/client_page.html', context)
+  else :
+    return HttpResponseNotFound('<h1>Page not found</h1>')
+
+
+
+def publish(request, id) :
+  campaign = Campaign.objects.get(id=id)
+  campaign.published = True
+  campaign.save()
+
+  return JsonResponse({'action': 'published'})
+
+
+def block(request, id) :
+  campaign = get_object_or_404(Campaign, pk=id)
+  campaign.published = False
+  campaign.save()
+
+  return JsonResponse({'action': 'blocked'})

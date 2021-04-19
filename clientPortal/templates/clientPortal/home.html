@@ -25,8 +25,10 @@ CLIENT PORTAL
           <thead>
             <tr>
               <th style="width: 30%;">Campaign</th>
-              <th style="width: 40%;">Date</th>
-              <th style="width: 30%;">View</th>
+              <th style="width: 30%;">Date</th>
+              <th style="width: 20%;">Status</th>
+              <th style="width: 10%;">Action</th>
+              <th style="width: 10%;">View</th>
             </tr>
           </thead>
           <tbody>
@@ -34,6 +36,20 @@ CLIENT PORTAL
             <tr>
               <td>{{ campaign.readable_name }}</td>
               <td>{{ campaign.date }}</td>
+              <td>
+                {% if campaign.published %}
+                  <span class="text-success">Published</span>
+                {% else %}
+                  <span class="text-danger">Blocked</span>
+                {% endif %}
+              </td>
+              <td>
+                {% if campaign.published %}
+                <button class="btn btn-danger" onclick="block('{{ campaign.id }}')"><i class="fas fa-search"></i>&nbsp;Block</button>
+                {% else %}
+                <button class="btn btn-success" onclick="publish('{{ campaign.id }}')"><i class="fas fa-search"></i>&nbsp;Publish</button>
+                {% endif %}
+              </td>
               <td>
                 <a class="btn btn-primary" target="_blank" href="{% url 'client_page' campaign.client.name campaign.name %}"><i class="fas fa-search"></i>&nbsp;View</a>
               </td>
@@ -100,6 +116,32 @@ CLIENT PORTAL
 
   })
 </script>-->
+
+<script>
+
+  function publish(campaignID) {
+    fetch(`/portal/publish/${campaignID}/`, {
+      method: 'GET',
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      window.location.reload()
+    })  
+  }
+
+  async function block(campaignID) {
+    fetch(`/portal/block/${campaignID}/`, {
+      method: 'GET',
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      window.location.reload()
+    })  
+  }
+
+</script>
 
 
 {% endblock %}

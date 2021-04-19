@@ -8,6 +8,7 @@ from client.models import Client
 class Campaign(models.Model) :
   client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='campaign')
   name = models.CharField(max_length=50, null=True, unique=True)
+  published = models.BooleanField(default=False)
   date = models.DateField(auto_now_add=True, null=True)
 
   def __str__(self) :
@@ -15,6 +16,8 @@ class Campaign(models.Model) :
 
   def readable_name(self) :
       return self.name.replace('-', ' ')
+
+      
 @receiver(pre_save, sender=Campaign)
 def format_name_campaign(sender, instance, **kwargs) :
     instance.name = instance.name.replace(' ', '-')
