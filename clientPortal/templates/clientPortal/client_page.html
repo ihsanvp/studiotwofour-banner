@@ -120,86 +120,7 @@ Alantra template
             }
         </style>
 
-        <style>
-            .gdn-section .tabs li {
-                width: 50%;
-            }
-
-            .sidebar-navigation {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .sidebar-navigation .logo a {
-                display: inline-block;
-                background-color: transparent;
-                border: none;
-                cursor: default;
-            }
-
-            .sidebar-navigation .logo a img {
-                z-index: 50;
-                cursor: pointer;
-                pointer-events: all;
-            }
-
-            .sidebar-navigation .logo {
-                position: relative !important;
-                width: 100%;
-                height: 80px;
-                line-height: 100px;
-                background-color: #3d348b;
-                padding: 20px;
-                text-align: center;
-                margin-bottom: 80px;
-            }
-
-            /* Campaign Details Styles */
-            .info {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                color: aliceblue;
-                width: 100%;
-                height: 60px;
-            }
-
-            .sidebar-navigation nav {
-                flex-grow: 1;
-                position: relative;
-                top: 55% !important;
-            }
-
-            .sidebar-navigation .social-icons {
-                position: relative;
-            }
-
-            .line {
-                width: 16%;
-                height: 1px;
-                background-color: aliceblue;
-                transform: translateY(16px);
-            }
-
-            .info .header {
-                display: flex;
-                justify-content: space-around;
-                width: 100%;
-                padding: 5px 0;
-            }
-
-            .info .header .content {
-                text-align: center;
-                padding: 0 10px;
-                font-size: 20px;
-            }
-
-            .date {
-                padding: 5px 0;
-                color: rgb(179, 179, 179);
-            }
-        </style>
+        
 
         <div class="warning">
             Your device does not support this page.
@@ -264,14 +185,14 @@ Alantra template
                 .sidebar nav {
                     margin-bottom: 80px;
                 }
-                .sidebar .logo {         
+                .sidebar .logo {  
+                    position: relative;       
                     width: 100%;
                     height: 80px;
                     line-height: 100px;
                     background-color: #3D348B;
                     padding: 20px;
                     text-align: center;
-                    margin-bottom: 60px;
                 }
                 .sidebar .logo a {
                     display: inline-block;
@@ -285,6 +206,7 @@ Alantra template
                     pointer-events: all;
                 }
                 .info {
+                    padding-top: 100px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -312,6 +234,16 @@ Alantra template
                     padding: 0 10px;
                     font-size: 20px;
                 }
+                .sidebar nav {
+                    position: static;
+                    flex-grow: 1;
+                    margin: 0;
+                    height: fit-content;
+                    top: 0;
+                    left: 0;
+                    transform: translate(0);
+                    padding-top: 100px;
+                }
                 .sidebar .social-icons {
                     position: relative;
                 }
@@ -324,8 +256,8 @@ Alantra template
                         <img
                             src="{% static 'images/S24_new_Logo.png' %}"
                             alt=""
-                            width="30%"
-                            height="auto"
+                            width="auto"
+                            height="100px"
                         />
                     </a>
                 </div>
@@ -465,7 +397,7 @@ Alantra template
                         width: 300px;
                         height: 50px;
                         margin-right: 362px;
-                        top: 307px;
+                        top: 293px;
                     }
                     .banner-wrapper .banner-300x250 .desktop .slides-wrapper {
                         width: 300px;
@@ -646,7 +578,7 @@ Alantra template
                                                 <div class="slides-wrapper">
                                                     <iframe
                                                         class="main"
-                                                        src="{% static '' %}banner/eng/{{ banner.name }}/index.html"
+                                                        src="{% static '' %}banner/{{ banner.name }}/index.html"
                                                         frameborder="0"
                                                     ></iframe>
                                                 </div>

@@ -57,8 +57,8 @@ BANNERS
                 <th style="width: 15%;">Campaign</th>
                 <th style="width: 15%;">Date</th>
                 <th style="width: 15%;">Type</th>
-                <th style="width: 7.5%;">Eng</th>
-                <th style="width: 7.5%;">Ar</th>
+                <th style="width: 7.5%;">View</th>
+                <!-- <th style="width: 7.5%;">Ar</th> -->
                 <th style="width: 7.5%;">Delete</th>
                 <th style="width: 7.5%;">Edit</th>
               </tr>
@@ -76,11 +76,11 @@ BANNERS
                 <td>{{ banner.date }}</td>
                 <td>{{ banner.type }}</td>
                 <td>
-                  <a class="text-primary" target="pop1" href="{% static '' %}banner/eng/{{ banner.name }}/index.html"><i class="fas fa-search"></i>&nbsp;View Eng</a>
+                  <a class="text-primary" target="pop1" href="{% static '' %}banner/{{ banner.name }}/index.html"><i class="fas fa-search"></i>&nbsp;View</a>
                 </td>
-                <td>
+                <!-- <td>
                   <a class="text-primary" target="pop2" href="{% static '' %}banner/ar/{{ banner.name }}/index.html"><i class="fas fa-search"></i>&nbsp;View Ar</a>
-                </td>
+                </td> -->
                 <td>
                   <a class="text-danger" href="{% url 'delete_banner' banner.id %}"><i class="fas fa-trash"></i>&nbsp;Delete</a>
                 </td>
