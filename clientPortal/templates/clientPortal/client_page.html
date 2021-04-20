@@ -280,9 +280,9 @@ Alantra template
                 </div>
                 <nav>
                     <ul>
-                        {% for banner in campaign.banner.all %}
+                        {% for banner in banners %}
                         <li>
-                            <a href="#gdn-start-{{ banner.type }}">
+                            <a href="#gdn-start-{{ banner.type }}-{{ banner.id }}">
                                 <span class="rect"></span>
                                 <span class="circle"></span>
                                 {{ banner.type }}
@@ -361,6 +361,9 @@ Alantra template
                         margin: auto;
                         overflow-y: scroll;
                     }
+                    .banner-wrapper iframe {
+                        background: url("{% static 'images/loading.gif' %}") center center no-repeat;
+                    }
                 </style>
 
                 <style>
@@ -416,10 +419,10 @@ Alantra template
                         top: 77px;
                     }
                     .banner-wrapper .banner-300x1050 .desktop .slides-wrapper {
-                        width: 300px;
-                        height: 1050px;
-                        margin-right: 38px;
-                        top: 77px;
+                        width: calc(300px * 0.62);
+                        height: calc(1050px * 0.62);
+                        margin-right: 212px;
+                        top: 38px;
                     }
                     .banner-wrapper .banner-320x50 .desktop .slides-wrapper {
                         width: 320px;
@@ -554,9 +557,9 @@ Alantra template
                     }
                 </style>
 
-                {% for banner in campaign.banner.all %}
+                {% for banner in banners %}
                 <section
-                    id="gdn-start-{{ banner.type }}"
+                    id="gdn-start-{{ banner.type }}-{{ banner.id }}"
                     class="content-section gdn-section"
                 >
                     <div class="section-content">

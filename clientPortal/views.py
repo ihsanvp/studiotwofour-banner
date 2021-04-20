@@ -86,11 +86,17 @@ def client_page(request, client_name, campaign_name) :
       #feedback = Feedback(campaign=campaign, message=msg, sent=False)
       #feedback.save()
 
+  banners = campaign.banner.all().order_by('type')
+
   context = {
     'client':client,
     'campaign':campaign,
+    'banners': banners,
     'count': range(9)
   }
+
+  print(banners)
+
   if campaign.published :
     return render(request, 'clientPortal/client_page.html', context)
   else :
