@@ -1,3 +1,4 @@
+from clientPortal.models import Feedback
 from django.shortcuts import render
 from client.models import Client
 from campaign.models import Campaign
@@ -61,15 +62,11 @@ def client_page(request, client_name, campaign_name) :
 
   if request.method == 'POST' :
     data = request.POST.dict()
-
     msg = data.get('message')
-
     subject = 'Feedback from %s' %(client.readable_name())
     message = 'You have recieved a feedback from %s regarding %s.\n \nClient : %s\nCampaign : %s\n \nMESSAGE :\n%s' %(client.readable_name(), campaign.readable_name(), client.readable_name(), campaign.readable_name(), msg)
 
-    try :
-      
-      
+    try : 
       send_mail(
               subject,
               message,
@@ -78,13 +75,13 @@ def client_page(request, client_name, campaign_name) :
               fail_silently=False,
       )      
 
-      #feedback = Feedback(campaign=campaign, message=msg, sent=True)
-      #feedback.save()
+      feedback = Feedback(campaign=campaign, message=msg, sent=True)
+      feedback.save()
     
     except :
       pass
-      #feedback = Feedback(campaign=campaign, message=msg, sent=False)
-      #feedback.save()
+      feedback = Feedback(campaign=campaign, message=msg, sent=False)
+      feedback.save()
 
   banners = campaign.banner.all().order_by('type')
 
@@ -94,8 +91,6 @@ def client_page(request, client_name, campaign_name) :
     'banners': banners,
     'count': range(9)
   }
-
-  print(banners)
 
   if campaign.published :
     return render(request, 'clientPortal/client_page.html', context)

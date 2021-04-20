@@ -1,3 +1,4 @@
+from campaign.models import Campaign
 from django.shortcuts import redirect, render
 from .models import Banner
 from .forms import BannerForm
@@ -8,13 +9,21 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required()
 def banner_home(request) :
-  banners = Banner.objects.all()
+  banners = Banner.objects.all().order_by('date')
+  campaigns = Campaign.objects.all()
+
+  campaign_id = request.GET.get('campaign', None)
+
+  if  campaign_id :
+    banners = Banner.objects.all().filter(campaign__id=campaign_id).order_by('type')
+
   paginator = Paginator(banners, 15)
   page_number = request.GET.get('page')
   page_obj = paginator.get_page(page_number)
 
   context = {
     'page_obj':page_obj,
+    'campaigns': campaigns
   }
   return render(request, 'bannerApp/home.html', context)
 

@@ -13,7 +13,23 @@ BANNERS
 
 {% block content %}
 
+<hr>
 
+<h4 class="px-1 mb-3">Filters</h4>
+
+<div class="row mx-0">
+  <div class="col-6">
+    <label>Campaign</label>
+    <select name="campaign" id="campaign-select" style="width: 300px;" onchange="selectCampaign(this)">
+      <option value="all" >All</option>
+      {% for campaign in campaigns %}
+      <option value="{{ campaign.id }}">{{ campaign.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+</div>
+
+<hr>
 
 <div class="row">
   <div class="col-12">
@@ -123,6 +139,27 @@ BANNERS
 {% endblock %}
 
 {% block js %}
+
+<script>
+
+  const selectElem = document.getElementById('campaign-select')
+  const urlParams = new URLSearchParams(window.location.search)
+  const campaignParam = urlParams.get('campaign')
+
+  if (campaignParam) {
+    selectElem.value = campaignParam
+  }
+
+  function selectCampaign(select) {
+    const value = select.value
+    if (value == 'all') {
+      window.location.href = '/banner/'
+    } else {
+      window.location.href = `/banner/?campaign=${value}`
+    }
+  }
+
+</script>
 
 <script>
   
