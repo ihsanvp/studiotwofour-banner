@@ -39,8 +39,8 @@ def bulk_actions(request) :
     items_count = len(items)
 
     if action == 'delete' :
-      for name in items :
-        banner = Banner.objects.get(name=name)
+      for id in items :
+        banner = Banner.objects.get(id=id)
         banner.delete()
 
       if items_count > 0 :

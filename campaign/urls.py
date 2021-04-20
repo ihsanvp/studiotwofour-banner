@@ -4,6 +4,8 @@ from . import views
 urlpatterns = [
   path('', views.campaign_home, name='campaign_home'),
 
+  path('bundle-upload/', views.bundle_upload, name='bundle_upload'),
+
   path('add/', views.add_campaign, name='add_campaign'),
   path('delete/<int:pk>', views.delete_campaign, name='delete_campaign'),
   path('edit/<int:pk>', views.edit_campaign, name='edit_campaign'),

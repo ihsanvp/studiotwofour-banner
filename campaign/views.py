@@ -1,12 +1,84 @@
 from django.shortcuts import redirect, render
 from .models import Campaign
-from .forms import CampaignForm
+from .forms import CampaignForm, UploadBundleForm
 from client.models import Client
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.files.storage import default_storage
+import zipfile
+import os 
+import uuid
+from bannerApp.models import Banner
+from django.core.files.base import File
+import shutil
 
 # Create your views here.
+@login_required()
+def bundle_upload(request) :
+
+  form = UploadBundleForm()
+  context = {
+    'form': form
+  }
+
+  if request.POST :
+    form = UploadBundleForm(request.POST, request.FILES)
+
+    if form.is_valid() :
+      file = form.cleaned_data['file']
+      client = form.cleaned_data['client']
+
+      campaign_count = 0
+      banner_count = 0
+
+      upload_id = str(uuid.uuid4())
+      banner_types = Banner.TYPES
+      banner_types = list(map(lambda type : type[0], banner_types))
+
+      temp_dir = os.path.join(default_storage.location, 'Banner', 'temp', upload_id)
+
+      try :
+        with zipfile.ZipFile(file) as zip_obj :
+          zip_obj.extractall(temp_dir)
+
+        for campaign in os.listdir(temp_dir) :
+          campaign_path = os.path.join(temp_dir, campaign)
+          
+          campaign, created = Campaign.objects.get_or_create(name=campaign, client=client)
+
+          if created :
+            campaign_count += 1
+
+          for banner_zip in os.listdir(campaign_path) :
+            banner_type = banner_zip.replace('.zip', '')
+            
+            if banner_type in banner_types :
+
+              banner_path = os.path.join(campaign_path, banner_zip)
+              banner_filename = banner_zip
+
+              banner = Banner(type=banner_type, campaign=campaign)
+              f = open(banner_path, 'rb')
+              banner_file = File(f)
+              banner.file.save(banner_filename, banner_file, save=True)
+              f.close()
+
+              banner_count += 1
+
+        messages.success(request, f'Added {campaign_count} Campaigns & {banner_count} Banners')
+      except Exception as error :
+        messages.error(request, str(error))
+
+
+      shutil.rmtree(temp_dir, ignore_errors=True)        
+
+    
+    else :
+      messages.error(request, 'Bundle Upload failed')
+
+  return render(request, 'campaign/bundle_upload.html', context=context)
+
 @login_required()
 def campaign_home(request) :
 

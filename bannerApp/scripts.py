@@ -12,7 +12,7 @@ def manage_zip_upload(instance, tempDir, targetDir) :
                 print('Dirs in current directory :', subdirs)
                 os.rename(os.path.join(mainDir, file), os.path.join(mainDir, 'index.html'))
                 #mainDir_name = os.path.split(mainDir)[-1]
-                new_mainDir = os.path.join(os.path.dirname(mainDir), instance.name)
+                new_mainDir = os.path.join(os.path.dirname(mainDir), str(instance.id))
                 try :
                     os.rename(mainDir, new_mainDir)
                 except FileExistsError :

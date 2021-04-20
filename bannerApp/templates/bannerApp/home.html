@@ -69,12 +69,10 @@ BANNERS
                     <input id="check-all" value="checked" type="checkbox">
                   </div>
                 </th>
-                <th style="width: 25%;">Name</th>
-                <th style="width: 15%;">Campaign</th>
                 <th style="width: 15%;">Date</th>
+                <th style="width: 40%;">Campaign</th>
                 <th style="width: 15%;">Type</th>
                 <th style="width: 7.5%;">View</th>
-                <!-- <th style="width: 7.5%;">Ar</th> -->
                 <th style="width: 7.5%;">Delete</th>
                 <th style="width: 7.5%;">Edit</th>
               </tr>
@@ -84,15 +82,14 @@ BANNERS
               <tr>
                 <td>
                   <div class="icheck-primary d-inline">
-                    <input class="select" type="checkbox" id="{{ banner.name }}" name="{{ banner.name }}" value="checked">
+                    <input class="select" type="checkbox" id="{{ banner.id }}" name="{{ banner.id }}" value="checked">
                   </div>
                 </td>
-                <td>{{ banner.readable_name }}</td>
-                <td>{{ banner.campaign.readable_name }}</td>
                 <td>{{ banner.date }}</td>
+                <td>{{ banner.campaign.readable_name }}</td>
                 <td>{{ banner.type }}</td>
                 <td>
-                  <a class="text-primary" target="pop1" href="{% static '' %}banner/{{ banner.name }}/index.html"><i class="fas fa-search"></i>&nbsp;View</a>
+                  <a class="text-primary" target="pop1" href="{% static '' %}{{ banner.location }}"><i class="fas fa-search"></i>&nbsp;View</a>
                 </td>
                 <!-- <td>
                   <a class="text-primary" target="pop2" href="{% static '' %}banner/ar/{{ banner.name }}/index.html"><i class="fas fa-search"></i>&nbsp;View Ar</a>

@@ -12,8 +12,7 @@ from .scripts import manage_zip_upload
 from campaign.models import Campaign
 
 def upload_path_handler(instance, filename):
-    name = instance.name
-    return "Banner/zip/%s/%s" %(name, filename)
+    return "Banner/zip/%s/%s" %(instance.id, filename)
 
 class Banner(models.Model) :
 
@@ -39,7 +38,6 @@ class Banner(models.Model) :
     )
 
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, related_name='banner')
-    name = models.CharField(max_length=50, unique=True)
     file = models.FileField(upload_to=upload_path_handler)
     type = models.CharField(max_length=20, choices=TYPES)
     date = models.DateField(auto_now_add=True, null=True)
@@ -47,19 +45,16 @@ class Banner(models.Model) :
     def __str__(self):
         return  self.name + '   ' + self.type
 
-    def readable_name(self) :
-      return self.name.replace('-', ' ')
-@receiver(pre_save, sender=Banner)
-def format_name_banner(sender, instance, **kwargs) :
-    instance.name = instance.name.replace(' ', '-')
+    def location(self) :
+        return 'banner/%s/%s/index.html' %(self.campaign.name, self.id)
 
 
 @receiver(post_save, sender=Banner)
 def extract_banner(sender, instance, **kwargs):
     file = instance.file.path
 
-    tempDir = os.path.join(settings.BASE_DIR, 'media', 'Banner', 'temp', instance.name)
-    targetDir = os.path.join(settings.BASE_DIR, 'assets', 'banner')
+    tempDir = os.path.join(settings.BASE_DIR, 'media', 'Banner', 'temp', str(instance.id))
+    targetDir = os.path.join(settings.BASE_DIR, 'assets', 'banner', instance.campaign.name)
 
     # Make  temp Directory
     if not os.path.exists(tempDir) :

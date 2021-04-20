@@ -57,7 +57,7 @@ def test(request) :
 
 
 def client_page(request, client_name, campaign_name) :
-  campaign = Campaign.objects.get(name=campaign_name)
+  campaign = Campaign.objects.get(name=campaign_name, client__name=client_name)
   client = Client.objects.get(name=client_name)
 
   if request.method == 'POST' :
