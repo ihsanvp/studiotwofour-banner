@@ -585,7 +585,7 @@ Alantra template
                                                 <div class="slides-wrapper">
                                                     <iframe
                                                         class="main"
-                                                        src="{% static '' %}{{ banner.location }}"
+                                                        data-src="{% static '' %}{{ banner.location }}"
                                                         frameborder="0"
                                                     ></iframe>
                                                 </div>
@@ -729,13 +729,15 @@ Alantra template
         <script>
             let options = {
                 rootMargin: "0px",
-                threshold: 0.5,
+                threshold: ['0'],
             };
 
             let callback = (entries, observer) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-                        entry.target.src += "";
+                    if (entry.isIntersecting) {
+                        entry.target.src = entry.target.dataset.src
+                    } else {
+                        entry.target.src = ''
                     }
                 });
             };
